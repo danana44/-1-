@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jQuery.min.js"></script>
+    <script>
+        $(function () {
+            $("li").on({
+                "mouseenter": function () {
+                    $(this).stop().animate({ width: 700 });
+                    $(this).children(".da").show();
+                    $(this).children(".xiao").hide();
+                },
+                "mouseleave": function () {
+                    $(this).stop().animate({ width: 400 });
+                    $(this).children(".xiao").fadeIn();
+                    $(this).children(".da").fadeOut();
+                }
+            })
+        })
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        ul li {
+            position: relative;
+            float: left;
+            margin: 15px;
+            width: 400px;
+            height: 800px;
+            list-style: none;
+        }
+
+        ul .current {
+            width: 700px;
+        }
+
+        ul .current .da {
+            display: block;
+        }
+
+        ul .current .xiao {
+            display: none;
+        }
+
+        /* #1,
+        #2 {
+            position: relative;
+        } */
+
+        li .da {
+            /* position: absolute; */
+            /* margin: 40px; */
+            display: none;
+            left: 0;
+            top: 0;
+            width: 700px;
+            height: 800px;
+            border-radius: 30px;
+        }
+
+        li .xiao {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 400px;
+            height: 800px;
+            border-radius: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="parent">
+        <li>
+            <img src="../image/girl1.png" alt="1" class="da">
+            <img src="../image/girl1 XIAO.png" alt="1" class="xiao">
+        </li>
+        <li>
+            <img src="../image/girl2.jpg" alt="1" class="da">
+            <img src="../image/girl2 xiao.jpg" alt="1" class="xiao">
+        </li>
+        <li>
+            <img src="../image/girl3.jpg" alt="1" class="da">
+            <img src="../image/girl3 xiao.jpg" alt="1" class="xiao">
+        </li>
+        <li>
+            <img src="../image/girl4.png" alt="1" class="da">
+            <img src="../image/girl4 xiao.png" alt="1" class="xiao">
+        </li>
+        <li>
+            <img src="../image/girl5.png" alt="1" class="da">
+            <img src="../image/girl5 xiao.png" alt="1" class="xiao">
+        </li>
+    </ul>
+</body>
+
+</html>

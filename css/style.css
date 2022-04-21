@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #ffffff;
+}
+a {
+    /* color: #666; */
+    text-decoration: none;
+}
+
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.main {
+    height: 465px;
+    /* background-color: purple; */
+} 
+
+li {
+    list-style: none;
+}
+
+.main .sort ul{
+    float: left;
+    width: 209px;
+    border-left: 1px solid #c81623;
+    background: #c81623;
+    color: #fff;
+    font: 14px "Micorsoft Yahei";
+    line-height: 31px;
+}
+.main .sort ul li{
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 31px;
+}
+.main .sort ul li::after{
+    position: absolute;
+    right: 10px;
+    content: "\e62b";
+    font-family: "iconfont";
+}
+.main .sort ul li:hover {
+    background-color: #fff;
+    color: #c81623;
+}
+.main .sort ul li:hover a {
+    color: #c81623;
+}
+.main .sort ul li a {
+    color: #fff;
+}
+
+.posters{
+    float: left;
+    margin: 10px 0 0 10px;
+    width: 721px;
+    height: 456px;
+}
+
+.letter {
+    float: left;
+    margin: 11px 0 0 9px;
+    height: 454px;
+    width: 250px;
+    /* background-color: #666; */
+}
+.letter .shang {
+    height: 374px;
+    width: 100%;
+    border: 1px solid #e8e8e7;
+}
+.letter .shang .offers{
+    width: 100%;
+    height: 164px;
+}
+.letter .shang .offers .h{
+    position: relative;
+    height: 34px;
+    width: 100%;
+    border-bottom: 1px dotted #e8e8e7;
+}
+.letter .shang .offers .h::after {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    content: "\e62b";
+    font: 7px "iconfont";
+    color: #81b6e7;
+}
+.letter .shang .offers .h .l{
+    float: left;
+    padding-left: 14px;
+    /* position: absolute;
+    top: 11px; */
+    /* left: 14px; */
+    font:14px "Micorsoft Yahei";
+    line-height: 34px;
+    color: #333333;
+}
+.letter .shang .offers .h .r{
+    float: left;
+    position: absolute;
+    top: 10px;
+    right: 34px;
+    font:11px "Micorsoft Yahei";
+    line-height: 11px;
+    color: #81b6e7;
+}
+.letter .shang .offers .b{
+    width: 100%;
+    height: 130px;
+}
+
+.letter .shang .kinds {
+    border-top: 1px solid #e8e8e7;
+    height: 210px;
+    width: 100%;
+    overflow: hidden;
+    /* background-color: red; */
+}
+
+.letter .xia {
+    width: 100%;
+    height: 80px;
+    margin-top: 5px;
+}
+
+.offers .b .tehui {
+    padding: 5px 0  0 15px;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.offers .b .tehui li a{
+    color: #666;
+}
+.kinds ul {
+    width: 300px;
+}
+.kinds ul li {
+    float: left;
+    width: 63px;
+    height: 71px;
+    border-bottom: 1px solid #e8e8e7;
+    border-right: 1px solid #e8e8e7;
+}
+.kinds ul li div {
+    width: 27px;
+    height: 25px;
+    margin: 12px auto auto auto;
+    background-image: url(../image/icons.png);
+}
+.kinds ul li .spirit1 {
+    background-position: -15px -15px;
+}
+
+.kinds ul li a{
+    display: block;
+}
+.kinds ul li a p{
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    margin-top: 9px;
+}

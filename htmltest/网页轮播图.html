@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jQuery.min.js"></script>
+    <link rel="stylesheet" href="../fonts/font_ze0eew75x6l/iconfont.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            background-color: rgb(108, 125, 121);
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .parent {
+            position: relative;
+            top: 150px;
+            margin: auto;
+            text-align: center;
+            width: 500px;
+            height: 380px;
+            background-color: pink;
+            overflow: hidden;
+        }
+
+        .parent>a {
+            display: block;
+            /* margin: 175px auto auto auto; */
+            width: 20px;
+            height: 30px;
+            background-color: black;
+            opacity: 0.3;
+        }
+
+        .parent>a span {
+            display: block;
+            font-size: 15px;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .parent .xiaoyu {
+            /* float: left; */
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            left: 0;
+            /* margin: 175px auto auto auto; */
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .parent .dayu {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            right: 0;
+            /* margin: 175px auto auto auto; */
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .dot {
+            position: absolute;
+            display: none;
+            /* top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0; */
+            /* padding: 5px 9px; */
+            top: 325px;
+            left: 50%;
+            transform: translate(-50%);
+            /* margin: auto; */
+            border-radius: 8px;
+            background-color: rgba(202, 193, 193, 0.3);
+            /* opacity: 0.3; */
+        }
+
+        .dot li {
+            float: left;
+            width: 15px;
+            height: 15px;
+            margin: 3px 5px;
+            border-radius: 50%;
+            background-color: rgb(67, 58, 58);
+            opacity: 0.5;
+        }
+
+        .parent .dot a .current {
+            background-color: rgb(77, 108, 244);
+            opacity: 1;
+        }
+
+        .parent .imgs {
+            position: absolute;
+            left: 0;
+            width: 3000px;
+        }
+
+        .parent .imgs li {
+            float: left;
+        }
+
+        .parent .imgs li img {
+            display: block;
+            width: 500px;
+            height: 380px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <ul class="imgs">
+            <li><a href="#"><img src="../image/1 (67).jpg" alt="1"></a></li>
+            <li><a href="#"><img src="../image/1 (71).png" alt="1"></a></li>
+            <li><a href="#"><img src="../image/1 (42).png" alt="1"></a></li>
+            <li><a href="#"><img src="../image/1 (65).png" alt="1"></a></li>
+        </ul>
+        <a href="#" class="xiaoyu">
+            <span class="iconfont icon-xiaoyufuhao"></span>
+        </a>
+        <a href="#" class="dayu">
+            <span class="iconfont icon-dayufuhao"></span>
+        </a>
+        <ul class="dot">
+            <a href="#">
+                <li class="current"></li>
+            </a>
+            <a href="#">
+                <li></li>
+            </a>
+            <a href="#">
+                <li></li>
+            </a>
+            <a href="#">
+                <li></li>
+            </a>
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            var num = 0;
+            var timer = setInterval(function () {
+                $(".dayu").click()
+            }, 3000)
+            var flag = true;
+            $(".imgs li").eq(0).clone(true).appendTo(".imgs");
+            $(".parent").on({
+                "mouseenter": function () {
+                    $(".dot,.dayu,.xiaoyu").show();
+                    clearInterval(timer);
+                    timer = null;
+                },
+                "mouseleave": function () {
+                    $(".dot,.dayu,.xiaoyu").hide();
+                    timer = setInterval(function () {
+                        $(".dayu").click()
+                    }, 3000)
+                }
+            })
+            $(".dayu,.xiaoyu").on({
+                "mouseenter": function () {
+                    $(this).css("color", "skyblue")
+                },
+                "mouseleave": function () {
+                    $(this).css("color", "rgb(255, 255, 255)")
+                }
+
+            })
+            $(".dot a").on("click", function () {
+                if (flag) {
+                    flag = false;
+                    $(this).siblings().children("li").removeClass("current");
+                    $(this).children("li").addClass("current");
+                    num = $(this).index();
+                    $(".imgs").animate({
+                        'left': - 500 * $(this).index()
+                    }, function () {
+                        flag = true;
+                    })
+                }
+
+            })
+
+            $(".dayu").on("click", function () {
+                if (flag) {
+                    flag = false;
+                    num++;
+                    $(".dot a").eq(num % 4).siblings().children("li").removeClass("current");
+                    $(".dot a").eq(num % 4).children("li").addClass("current");
+                    $(".imgs").animate({
+                        'left': - 500 + $(".imgs").position().left
+                    }, function () {
+                        if (num == 4) {
+                            num = 0;
+                            $(".parent .imgs").css("left", '0px');
+                        }
+                        flag = true;
+                    })
+                }
+
+            })
+
+            $(".xiaoyu").on("click", function () {
+                if (flag) {
+                    flag = false;
+                    num--;
+                    if (num == -1) {
+                        num = 3;
+                        $(".parent .imgs").css("left", '-2000px');
+                    }
+                    $(".dot a").eq(num % 4).siblings().children("li").removeClass("current");
+                    $(".dot a").eq(num % 4).children("li").addClass("current");
+                    $(".imgs").animate({
+                        'left': 500 + $(".imgs").position().left
+                    }, function () {
+                        flag = true;
+                    })
+                }
+
+            })
+        })
+    </script>
+</body>
+
+</html>

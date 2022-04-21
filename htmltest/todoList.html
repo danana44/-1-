@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/todoList.css">
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="../css/htmleaf-demo.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/fancyInput.css">
+</head>
+
+<body>
+    <h1>my todoList</h1>
+    <section class='input'>
+        <div>
+            <input class="in" type='text' placeholder=''>
+        </div>
+    </section>
+    <h2>正在进行<span id="todocount">3</span></h2>
+    <ol>
+        <!-- <li>
+            <input type="checkbox">
+            <p>bootstrap学习</p>
+            <a href="#">d</a>
+        </li> -->
+    </ol>
+    <h2>已经完成<span id="donecount">1</span></h2>
+    <ul>
+        <!-- <li>
+            <input type="checkbox">
+            <p>本地存储学习</p>
+            <a href="#">d</a>
+        </li> -->
+    </ul>
+    <!-- <a>nihaoma</a> -->
+    <script src="../js/jQuery.min.js"></script>
+    <script src="../js/todoList.js"></script>
+    <script>window.jQuery || document.write('<script src="../js/jQuery.min.js"><\/script>')</script>
+    <script src='../js/fancyInput.js'></script>
+    <script>
+            // Capture TAB to switch between the Demo page views (input/textarea)
+            (function () {
+                var viewTogglers = $('menu.radio input');
+
+                $(document).on('keydown', function (e) {
+                    if (e.key == 'tab' || e.keyCode == 9) {
+                        var $checked = viewTogglers.filter(':checked');
+                        var $next = viewTogglers.eq(viewTogglers.index($checked) + 1);
+                        if (!$next.length) {
+                            $next = viewTogglers.first();
+                        }
+                        $next.prop("checked", true).change();
+
+                        return false;
+                    }
+                });
+            })();
+
+        $('section :input').val('').fancyInput()[0].focus();
+
+        // Everything below is only for the DEMO
+        function init(str) {
+            var input = $('section input').val('')[0],
+                s = ''.split('').reverse(),
+                len = s.length - 1,
+                e = $.Event('keypress');
+
+            input.nextElementSibling.className = '';
+
+            var initInterval = setInterval(function () {
+                if (s.length) {
+                    var c = s.pop();
+                    fancyInput.writer(c, input, len - s.length).setCaret(input);
+                    input.value += c;
+                    //e.charCode = c.charCodeAt(0);
+                    //input.trigger(e);
+
+                }
+                else clearInterval(initInterval);
+            }, 150);
+        }
+
+        init();
+
+        $('menu').on('click', 'button', toggleEffect);
+        $('menu.radio').on('change', 'input', changeForm).find('input:first').prop('checked', true).trigger('change');
+
+        // change effects
+        function toggleEffect(num) {
+            var className = '';
+            idx = $(this).index() + 1,
+                $fancyInput = $('.fancyInput');
+
+            if (idx > 1)
+                className = 'effect' + idx;
+
+            $('#content').prop('class', className);
+            $fancyInput.find(':input')[0].focus();
+
+            $(this).addClass('active').siblings().removeClass('active');
+        }
+
+        function changeForm(e) {
+            // radio buttons stuff
+            var page = this.value,
+                highlight = $(e.delegateTarget).find('> div'),
+                label = $(this.parentNode),
+                marginLeft = parseInt(label.css('margin-left'), 10),
+                xPos;
+
+            highlight.css({ 'left': label.position().left + marginLeft, 'width': label.width() });
+
+            // page change stuff
+            xPos = '-' + label.index() * 50;
+            $('#content').css('transform', 'translateX(' + xPos + '%)');
+
+            setTimeout(function () {
+                $('#content').find('.' + page + ' :input')[0].focus();
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>

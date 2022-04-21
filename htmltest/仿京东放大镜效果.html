@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        .xiao {
+            float: left;
+            position: relative;
+            /* border: 1px solid #666; */
+            margin: 30px 0 0 30px;
+            width: 300px;
+            height: 400px;
+        }
+
+        .xiao img {
+            /* display: block; */
+            width: 100%;
+            height: 100%;
+        }
+
+        .xiao .magnify {
+            position: absolute;
+            display: none;
+            top: 0px;
+            left: 0px;
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            opacity: .3;
+        }
+
+        .da {
+            display: none;
+            float: left;
+            position: relative;
+            margin: 30px 0 0 10px;
+            width: 600px;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .da img {
+            display: block;
+            position: absolute;
+            width: 900px;
+            height: 1200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="xiao">
+            <div class="magnify"></div><img class="xiaoimg" src="../image/1 (49).png" alt="1">
+        </div>
+        <div class="da"><img class="bigimg" src="../image/1 (49).png" alt="1"></div>
+    </div>
+
+    <script>
+        // 太不容易了 我tm真是个天才
+        var magnify = document.querySelector('.magnify');
+        var xiao = document.querySelector('.xiao');
+        var da = document.querySelector('.da');
+        var bigimg = document.querySelector('.bigimg');
+        var xiaoimg = document.querySelector('.xiaoimg');
+        var body = document.querySelector('body');
+        xiao.addEventListener('mouseover', function (e) {
+            console.log("111");
+            // body.style.cursor = 'move'; // ?
+            magnify.style.display = 'block';
+            da.style.display = 'block';
+            fun1(e);
+        });
+        xiao.addEventListener('mouseout', function (e) {
+            magnify.style.display = 'none';
+            da.style.display = 'none';
+        });
+
+        var fun1 = function (e) {
+            var y = e.pageX - xiao.offsetLeft - magnify.offsetWidth / 2;
+            var x = e.pageY - xiao.offsetTop - magnify.offsetHeight / 2;
+            if (e.pageX > 230) {
+                y = 100;
+            }
+            if (e.pageY > 330) {
+                x = 200;
+            }
+            if (e.pageX < 130) {
+                y = 0;
+            }
+            if (e.pageY < 130) {
+                x = 0;
+            }
+            magnify.style.left = y + 'px';
+            magnify.style.top = x + 'px';
+            bigimg.style.top = - x * 3 + 'px';
+            bigimg.style.left = - y * 1.5 + 'px';
+        }
+        magnify.addEventListener('mousemove', fun1);
+
+    </script>
+</body>
+
+</html>

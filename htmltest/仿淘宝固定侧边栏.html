@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .w {
+            width: 600px;
+            margin: auto;
+        }
+
+        .head {
+            position: relative;
+            height: 80px;
+            background-color: green;
+        }
+
+        .eye {
+            margin-top: 20px;
+            height: 180px;
+            background-color: green;
+        }
+
+        .body {
+            margin-top: 20px;
+            height: 1000px;
+            background-color: green;
+        }
+
+        .ad {
+            position: absolute;
+            width: 60px;
+            height: 120px;
+            left: 1000px;
+            top: 150px;
+            background-color: blue;
+        }
+
+        .ad div {
+            display: none;
+            font: 8px "宋体";
+            margin-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ad">
+        <div class="back">回到顶部</div>
+    </div>
+    <div class="head w"></div>
+    <div class="eye w"></div>
+    <div class="body w"></div>
+    <script>
+        var ad = document.querySelector(".ad");
+        var eye = document.querySelector(".eye");
+        var body = document.querySelector(".body");
+        var back = document.querySelector(".back");
+        var dis = ad.offsetTop - eye.offsetTop;
+        var dis1 = ad.offsetTop;
+        console.log(dis);
+        document.addEventListener("scroll", function (e) {
+            if (window.pageYOffset >= eye.offsetTop) {
+
+                ad.style.position = 'fixed';
+                ad.style.top = dis + 'px';
+            } else {
+                ad.style.position = 'absolute';
+                ad.style.top = dis1 + 'px';
+            }
+
+            if (window.pageYOffset >= body.offsetTop) {
+                back.style.display = 'block';
+            } else {
+                back.style.display = 'none';
+            }
+            // window.pageYOffset;
+        });
+    </script>
+</body>
+
+</html>

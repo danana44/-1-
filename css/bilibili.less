@@ -1,0 +1,225 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+@keyframes move1 {
+    0% {}
+
+    50% {
+        transform-origin: 6px 6px;
+        transform: rotate(-35deg);
+    }
+
+    100% {
+        transform-origin: 6px 6px;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes move2 {
+    0% {}
+
+    50% {
+        transform-origin: 6px 0;
+        transform: rotate(35deg);
+    }
+
+    100% {
+        transform-origin: 6px 0;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes move3 {
+    0% {}
+
+    50% {
+        transform-origin: 6px 6px;
+        transform: rotate(35deg);
+    }
+
+    100% {
+        transform-origin: 6px 6px;
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes move4 {
+    0% {}
+
+    50% {
+        transform-origin: 6px 0;
+        transform: rotate(-35deg);
+    }
+
+    100% {
+        transform-origin: 6px 0;
+        transform: rotate(0deg);
+    }
+}
+
+.box {
+    position: relative;
+    width: 400px;
+    height: 340px;
+    margin: 100px auto;
+    border-radius: 5px;
+    overflow: hidden;
+
+    .Carousel_diagram {
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: flex;
+        height: 260px;
+        width: 2000px;
+
+        li {
+            a {
+                img {
+                    height: 260px;
+                    width: 400px;
+                }
+            }
+        }
+    }
+
+    .xia {
+        position: absolute;
+        top: 260px;
+        display: flex;
+        width: 100%;
+        height: 80px;
+        background-color: #07060b;
+        box-shadow: 0 -10px 20px 10px #07060b;
+        // z-index: 999;
+
+        .zuo {
+            width: 70%;
+            height: 100%;
+
+            a {
+                display: block;
+                margin: 10px 0 0 10px;
+                text-decoration: none;
+                color: white;
+                font: 15px "Microsoft Yahei";
+            }
+
+            .dots {
+                display: flex;
+                margin-top: 6px;
+                margin-left: 6px;
+
+                li {
+                    margin: 0 4px;
+                    height: 8px;
+                    width: 8px;
+                    border-radius: 50%;
+                    background-color: rgba(255, 255, 255, 0.7);
+                }
+
+                .current_left {
+                    position: relative;
+                    background-color: transparent;
+                }
+
+                .current_left::before {
+                    position: absolute;
+                    content: "";
+                    top: -2px;
+                    left: -2px;
+                    width: 12px;
+                    height: 6px;
+                    background-color: white;
+                    border-top-left-radius: 6px;
+                    border-top-right-radius: 6px;
+                    animation-name: move1;
+                    animation-duration: .5s;
+                    animation-iteration-count: 2;
+                }
+
+                .current_left::after {
+                    position: absolute;
+                    content: "";
+                    top: 4px;
+                    left: -2px;
+                    width: 12px;
+                    height: 6px;
+                    background-color: white;
+                    border-bottom-left-radius: 6px;
+                    border-bottom-right-radius: 6px;
+                    animation-name: move2;
+                    animation-duration: .5s;
+                    animation-iteration-count: 2;
+                }
+
+                .current_right {
+                    position: relative;
+                    background-color: transparent;
+                }
+
+                .current_right::before {
+                    position: absolute;
+                    content: "";
+                    top: -2px;
+                    left: -2px;
+                    width: 12px;
+                    height: 6px;
+                    background-color: white;
+                    border-top-left-radius: 6px;
+                    border-top-right-radius: 6px;
+                    animation-name: move3;
+                    animation-duration: .5s;
+                    animation-iteration-count: 2;
+                }
+
+                .current_right::after {
+                    position: absolute;
+                    content: "";
+                    top: 4px;
+                    left: -2px;
+                    width: 12px;
+                    height: 6px;
+                    background-color: white;
+                    border-bottom-left-radius: 6px;
+                    border-bottom-right-radius: 6px;
+                    animation-name: move4;
+                    animation-duration: .5s;
+                    animation-iteration-count: 2;
+                }
+            }
+        }
+
+        .you {
+            display: flex;
+            width: 30%;
+            height: 100%;
+            justify-content: space-around;
+
+            .dayu,
+            .xiaoyu {
+                margin-top: 15px;
+                width: 30px;
+                height: 30px;
+                background-color: rgba(255, 255, 255, 0.4);
+                border-radius: 4px;
+                line-height: 30px;
+                text-align: center;
+                font-weight: 700;
+                color: white;
+            }
+        }
+    }
+}

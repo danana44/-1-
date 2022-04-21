@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        .kuang {
+            position: absolute;
+            width: 200px;
+            height: 120px;
+            background-color: #6767;
+        }
+
+        .shang {
+            width: 100%;
+            height: 50px;
+            background-color: #666;
+        }
+
+        .shang:hover {
+            cursor: move;
+        }
+
+        .xia {
+            width: 100%;
+            height: 70px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="kuang">
+        <div class="shang"></div>
+        <div class="xia"></div>
+    </div>
+
+    <script>
+        var kuang = document.querySelector('.kuang');
+        var shang = document.querySelector('.shang');
+        shang.addEventListener('mousedown', function (e) {
+            var x = e.pageX - kuang.offsetLeft;
+            var y = e.pageY - kuang.offsetTop;
+            var fun = function (e1) {
+                kuang.style.left = e1.pageX - x + 'px';
+                kuang.style.top = e1.pageY - y + 'px';
+            };
+            document.addEventListener('mousemove', fun);
+            shang.addEventListener('mouseup', function (e2) {
+                document.removeEventListener('mousemove', fun);
+            })
+        })
+    </script>
+</body>
+
+</html>

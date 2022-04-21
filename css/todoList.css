@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    list-style: none;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+h2 span {
+    display: intline-block;
+    margin-left: 160px;
+}
+
+ul {
+    width: 478px;
+    /* height: 40px; */
+    margin: 0 auto;
+    opacity: 0.6;
+}
+
+ol {
+    width: 478px;
+    /* height: 40px; */
+    margin: 0 auto;
+}
+
+ol li {
+    padding-left: 20px;
+    margin-top: 10px;
+    width: 478px;
+    height: 40px;
+    background-color: rgb(199, 199, 199);
+    border-radius: 10px;
+    line-height: 40px;
+    color: rgb(86, 87, 88);
+}
+
+ul li {
+    padding-left: 20px;
+    margin-top: 10px;
+    width: 478px;
+    height: 40px;
+    background-color: rgb(199, 199, 199);
+    border-radius: 10px;
+    line-height: 40px;
+    color: rgb(86, 87, 88);
+}
+
+ol li input {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transform: translate(0, -50%);
+    line-height: 40px;
+}
+
+ul li input {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transform: translate(0, -50%);
+    line-height: 40px;
+}
+
+ol li p {
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+ul li p {
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+ol li * {
+    float: left;
+}
+
+ol li a {
+    float: right;
+    margin-right: 15px;
+    font-size: 10px;
+    line-height: 20px;
+    margin-top: 20px;
+    transform: translate(0, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: rgb(100, 110, 107);
+    border-radius: 15px;
+
+}
+
+ul li a {
+    float: right;
+    margin-right: 15px;
+    font-size: 10px;
+    line-height: 20px;
+    margin-top: 20px;
+    transform: translate(0, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: rgb(100, 110, 107);
+    border-radius: 15px;
+
+}
+
+ul li * {
+    float: left;
+}
+
+ol li a {
+    float: right;
+}
+
+ol li a {
+    float: right;
+}
